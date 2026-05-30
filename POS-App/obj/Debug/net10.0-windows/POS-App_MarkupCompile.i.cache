@@ -1,0 +1,20 @@
+﻿POS-App
+1.0.0.0
+
+winexe
+C#
+.cs
+D:\Local source\POS-App\POS-App\obj\Debug\net10.0-windows\
+POS_App
+none
+false
+TRACE;DEBUG;NET;NET10_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NET10_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+D:\Local source\POS-App\POS-App\App.xaml
+10-1456802663
+53-1451079168
+50523580722
+235545881072
+MainWindow.xaml;Views\Controls\AppModal.xaml;Views\Controls\CashView.xaml;Views\Controls\CustomerView.xaml;Views\Controls\PaymentView.xaml;Views\Controls\ProductPickerDialog.xaml;Views\Controls\QRView.xaml;Views\CustomerWindow.xaml;Views\LoginView.xaml;Views\OrderView.xaml;
+
+True
+

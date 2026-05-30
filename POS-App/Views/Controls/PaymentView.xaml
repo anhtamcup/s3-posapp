@@ -1,0 +1,301 @@
+﻿<UserControl x:Class="POS_App.Views.Controls.PaymentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS_App.Views.Controls"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+             >
+
+    <UserControl.Resources>
+
+        <Style x:Key="PaymentMethodButton" TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#CCD2E3"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="14,10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="MinWidth" Value="60"/>
+        </Style>
+
+        <Style x:Key="InfoBox" TargetType="Border">
+            <Setter Property="Background" Value="#F4F6FA"/>
+            <Setter Property="BorderBrush" Value="#CCD2E3"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Padding" Value="10,8"/>
+        </Style>
+
+        <Style x:Key="InfoTextLabel" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="{StaticResource FontSizeL}"/>
+            <Setter Property="Foreground" Value="#474747"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+        </Style>
+
+        <Style x:Key="InfoTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="#F4F6FA"/>
+            <Setter Property="BorderBrush" Value="#CCD2E3"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+            <Setter Property="FontSize" Value="{StaticResource FontSizeL}"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="TextBox">
+
+                        <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="6">
+
+                            <ScrollViewer
+                        x:Name="PART_ContentHost"
+                        Margin="{TemplateBinding Padding}"/>
+
+                        </Border>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+        <Style x:Key="ButtonNumberStyle"
+              TargetType="Button"
+              BasedOn="{StaticResource ButtonBase}">
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="FontSize" Value="{StaticResource FontSizeL}"/>
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+        <Style x:Key="KeypadIconStyle"
+              TargetType="svgc:SvgViewbox">
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="Stretch" Value="Uniform"/>
+        </Style>
+
+        <Style x:Key="ButtonActionStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource ButtonBase}">
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="FontSize" Value="{StaticResource FontSizeM}"/>
+        </Style>
+
+    </UserControl.Resources>
+    <Grid Background="#FFFFFF" DataContext="{Binding Summary}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Margin="0,0,5,0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0">
+            <TextBlock Text="Số tiền cần thu" Style="{StaticResource InfoTextLabel}" Margin="0" />
+            <TextBox  Style="{StaticResource InfoTextBox}" x:Name="txtAmountDue" IsReadOnly="True" Text="{Binding TotalAmount,StringFormat='{}{0:N0} đ'}" />
+            </StackPanel>
+            
+
+                <ListBox
+                    Grid.Row="1"
+                    x:Name="PaymentList"
+                            SelectedIndex="0"
+                            BorderThickness="0"
+                            Background="Transparent"
+                            SelectionChanged="PaymentList_SelectionChanged">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Margin" Value="0,5,5,0"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <ContentPresenter />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border x:Name="iconBorder"
+                                        Background="#FFFFFF"
+                                        Width="70"
+                                        Height="70"
+                                        CornerRadius="6"
+                                        Cursor="Hand"
+                                        BorderThickness="1"
+                                        BorderBrush="#F0F2F7"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <svgc:SvgViewbox
+                                                Height="15" x:Name="iconNormal" Source="{Binding IconPath}" />
+
+                                    <svgc:SvgViewbox
+                                                Height="15" x:Name="iconSelected" Source="{Binding IconPathSelected}" Visibility="Collapsed" />
+
+
+                                    <TextBlock x:Name="lblPaymentName"
+                                                Text="{Binding GroupMethodName}"
+                                                Foreground="#6F7A94"
+                                                FontSize="{StaticResource FontSizeM}"
+                                                FontWeight="Medium"
+                                                Margin="0,5,0,0"
+                                                HorizontalAlignment="Center"/>
+
+                                </StackPanel>
+                            </Border>
+
+
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True">
+                                    <Setter TargetName="lblPaymentName"
+                                                Property="TextBlock.Foreground"
+                                                Value="White"/>
+                                    <Setter TargetName="iconBorder" Property="Background" Value="#0B8822"/>
+                                    <Setter TargetName="iconNormal" Property="UIElement.Visibility" Value="Collapsed"/>
+                                    <Setter TargetName="iconSelected" Property="UIElement.Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+
+            <ContentControl Grid.Row="2" x:Name="PaymentContent" Background="Red" />
+        </Grid>
+
+        <Border CornerRadius="4" Grid.Column="1" Background="#DCE5EF">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Style="{StaticResource ButtonNumberStyle}" Click="Money_Click" Grid.Row="0" Grid.Column="0" Content="10k" />
+                <Button Style="{StaticResource ButtonNumberStyle}" Click="Money_Click" Grid.Row="0" Grid.Column="1" Content="20k" />
+                <Button Style="{StaticResource ButtonNumberStyle}" Click="Money_Click" Grid.Row="0" Grid.Column="2" Content="50k" />
+                <Button Style="{StaticResource ButtonNumberStyle}" Click="Money_Click" Grid.Row="0" Grid.Column="3" Content="100k" />
+
+                <Button Style="{StaticResource ButtonNumberStyle}" Click="Money_Click" Grid.Row="1" Grid.Column="0" Content="200k" />
+                <Button Style="{StaticResource ButtonNumberStyle}" Click="Money_Click" Grid.Row="1" Grid.Column="1" Content="500k" />
+                <Button Style="{StaticResource ButtonNumberStyle}" Click="Money_Click" Grid.Row="1" Grid.Column="2" Content="1000k" />
+                <Button Style="{StaticResource ButtonNumberStyle}" Click="Money_Click" Grid.Row="1" Grid.Column="3" Content="2000k" />
+
+                <Grid Grid.Row="2" Grid.ColumnSpan="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Style="{StaticResource ButtonNumberStyle}" Click="Number_Click" Grid.Column="0" Content="7" />
+                    <Button Style="{StaticResource ButtonNumberStyle}" Click="Number_Click" Grid.Column="1" Content="8" />
+                    <Button Style="{StaticResource ButtonNumberStyle}" Click="Number_Click" Grid.Column="2" Content="9" />
+                </Grid>
+
+                <Grid Grid.Row="3" Grid.ColumnSpan="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Style="{StaticResource ButtonNumberStyle}" Click="Number_Click" Grid.Column="0" Content="4" />
+                    <Button Style="{StaticResource ButtonNumberStyle}" Click="Number_Click" Grid.Column="1" Content="5" />
+                    <Button Style="{StaticResource ButtonNumberStyle}" Click="Number_Click" Grid.Column="2" Content="6" />
+                </Grid>
+
+                <Grid Grid.Row="4" Grid.ColumnSpan="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Style="{StaticResource ButtonNumberStyle}" Click="Number_Click" Grid.Column="0" Content="1" />
+                    <Button Style="{StaticResource ButtonNumberStyle}" Click="Number_Click" Grid.Column="1" Content="2" />
+                    <Button Style="{StaticResource ButtonNumberStyle}" Click="Number_Click" Grid.Column="2" Content="3" />
+                </Grid>
+
+                <Grid Grid.Row="5" Grid.ColumnSpan="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Style="{StaticResource ButtonNumberStyle}" Click="Number_Click" Grid.Column="0" Content="0" />
+                    <Button Style="{StaticResource ButtonNumberStyle}" Click="Number_Click" Grid.Column="1" Content="00" />
+                    <Button Style="{StaticResource ButtonNumberStyle}" Click="Backspace_Click" Grid.Column="2" Background="#B3D8EE">
+                        <svgc:SvgViewbox Source="/Assets/Icons/ico-remove.svg" Style="{StaticResource KeypadIconStyle}" />
+                    </Button>
+                </Grid>
+
+                <Grid Grid.Row="6" Grid.ColumnSpan="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Style="{StaticResource ButtonNumberStyle}"
+                                Click="Clear_Click"
+                                Grid.Column="0"
+                                Content="CLEAR"
+                                Background="#B3D8EE"
+                                Foreground="#2E384E"
+                                FontWeight="Medium" />
+
+                    <Button Style="{StaticResource ButtonNumberStyle}"
+                                Grid.Column="1"
+                                Foreground="#FFFFFF"
+                                FontWeight="Medium"
+                                Background="{StaticResource bg-button-green}"
+                                    Name="btnConfirmPayment"
+                                Click="btnConfirmPayment_Click"
+                                    Content="Thanh toán (F12)"
+                                    >
+                        <!--<svgc:SvgViewbox Source="/Assets/Icons/ico-close.svg" Style="{StaticResource KeypadIconStyle}" />-->
+                    </Button>
+                </Grid>
+
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

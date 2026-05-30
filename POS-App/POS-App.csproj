@@ -1,0 +1,247 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <RootNamespace>POS_App</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+    <None Remove="Assets\Icons\ico-add-customer.svg" />
+    <None Remove="Assets\Icons\ico-cancel.svg" />
+    <None Remove="Assets\Icons\ico-cash-1.svg" />
+    <None Remove="Assets\Icons\ico-close.svg" />
+    <None Remove="Assets\Icons\ico-credit-card-1.svg" />
+    <None Remove="Assets\Icons\ico-customer.svg" />
+    <None Remove="Assets\Icons\ico-decrease-quantity.svg" />
+    <None Remove="Assets\Icons\ico-delivery.svg" />
+    <None Remove="Assets\Icons\ico-desk-alt-1.svg" />
+    <None Remove="Assets\Icons\ico-destop.svg" />
+    <None Remove="Assets\Icons\ico-discount.svg" />
+    <None Remove="Assets\Icons\ico-down.svg" />
+    <None Remove="Assets\Icons\ico-help.svg" />
+    <None Remove="Assets\Icons\ico-history.svg" />
+    <None Remove="Assets\Icons\ico-increase-quantity.svg" />
+    <None Remove="Assets\Icons\ico-invoice.svg" />
+    <None Remove="Assets\Icons\ico-lock.svg" />
+    <None Remove="Assets\Icons\ico-log-out.svg" />
+    <None Remove="Assets\Icons\ico-note.svg" />
+    <None Remove="Assets\Icons\ico-open-cash.svg" />
+    <None Remove="Assets\Icons\ico-payment.svg" />
+    <None Remove="Assets\Icons\ico-preorder.svg" />
+    <None Remove="Assets\Icons\ico-print.svg" />
+    <None Remove="Assets\Icons\ico-promotion.svg" />
+    <None Remove="Assets\Icons\ico-refund.svg" />
+    <None Remove="Assets\Icons\ico-remove.svg" />
+    <None Remove="Assets\Icons\ico-report.svg" />
+    <None Remove="Assets\Icons\ico-restore.svg" />
+    <None Remove="Assets\Icons\ico-save.svg" />
+    <None Remove="Assets\Icons\ico-scan-barcode.svg" />
+    <None Remove="Assets\Icons\ico-search-product.svg" />
+    <None Remove="Assets\Icons\ico-setting.svg" />
+    <None Remove="Assets\Icons\ico-trash.svg" />
+    <None Remove="Assets\Icons\ico-up.svg" />
+    <None Remove="Assets\Icons\ico-voucher-1.svg" />
+    <None Remove="Assets\Icons\ico-wallet-1.svg" />
+    <None Remove="Assets\Icons\Payment\ico-cash-2.svg" />
+    <None Remove="Assets\Icons\Payment\ico-cash.svg" />
+    <None Remove="Assets\Icons\Payment\ico-desk-2.svg" />
+    <None Remove="Assets\Icons\Payment\ico-desk.svg" />
+    <None Remove="Assets\Icons\Payment\ico-qrcode-2.svg" />
+    <None Remove="Assets\Icons\Payment\ico-qrcode.svg" />
+    <None Remove="Assets\Icons\Payment\ico-visa-2.svg" />
+    <None Remove="Assets\Icons\Payment\ico-visa.svg" />
+    <None Remove="Assets\Icons\Payment\ico-voucher-2.svg" />
+    <None Remove="Assets\Icons\Payment\ico-voucher.svg" />
+    <None Remove="Assets\Icons\Payment\ico-wallet.svg" />
+    <None Remove="Assets\Images\Logo\header-logo.png" />
+    <None Remove="Fonts\Inter-Bold.ttf" />
+    <None Remove="Fonts\Inter-Medium.ttf" />
+    <None Remove="Fonts\Inter-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-add-customer.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-cancel.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-cash-1.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-close.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-credit-card-1.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-customer.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-decrease-quantity.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-delivery.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-desk-alt-1.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-destop.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-discount.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-down.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-help.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-history.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-increase-quantity.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-invoice.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-lock.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-log-out.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-note.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-open-cash.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-payment.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-preorder.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-print.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-promotion.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-refund.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-remove.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-report.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-restore.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-save.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-scan-barcode.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-search-product.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-setting.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-trash.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-up.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-voucher-1.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\ico-wallet-1.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\Payment\ico-cash-2.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\Payment\ico-cash.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\Payment\ico-desk-2.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\Payment\ico-desk.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\Payment\ico-qrcode-2.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\Payment\ico-qrcode.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\Payment\ico-visa-2.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\Payment\ico-visa.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\Payment\ico-voucher-2.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\Payment\ico-voucher.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\Payment\ico-wallet.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\Payment\ico-wallet-2.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\Logo\header-logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Inter-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Inter-Medium.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Inter-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CredentialManagement" Version="1.0.2" />
+    <PackageReference Include="Dapper" Version="2.1.79" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.8" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.8" />
+    <PackageReference Include="Notification.Wpf" Version="10.1.0" />
+    <PackageReference Include="QRCoder" Version="1.8.0" />
+    <PackageReference Include="SharpVectors.Wpf" Version="1.8.5" />
+    <PackageReference Include="WpfScreenHelper" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Pages\" />
+  </ItemGroup>
+
+</Project>
